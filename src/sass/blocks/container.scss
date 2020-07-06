@@ -1,0 +1,19 @@
+.container {
+  max-width: 1140px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 16px;
+  padding-left: 16px;
+
+  @include tablet {
+    max-width: 720px;
+  }
+
+  @include desktop {
+    max-width: $desktop-width;
+  }
+
+  @include desktop-large {
+    max-width: 1140px;
+  }
+}

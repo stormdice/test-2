@@ -1,0 +1,114 @@
+{
+  "data": {
+    "products": [
+      {
+        "title": "Video Suite",
+        "subtitle": "Lifetime / 1 PC",
+        "price": "3 770",
+        "specialPrice": "1 990",
+        "includedItems": [
+          {
+            "title": "Video Editor Plus",
+            "price": "1490"
+          },
+          {
+            "title": "Video Converter Premium",
+            "price": "1290"
+          },
+          {
+            "title": "Screen Recorder",
+            "price": "990"
+          }
+        ]
+      },
+      {
+        "isBestseller": true,
+        "title": "Video Suite + Photo Editor",
+        "subtitle": "Lifetime / 1 PC",
+        "price": "5 060",
+        "specialPrice": "2 490",
+        "specialPriceText": "Offer valid until September 30, 2018",
+        "includedItems": [
+          {
+            "title": "Video Editor Plus",
+            "price": "1490"
+          },
+          {
+            "title": "Video Converter Premium",
+            "price": "1290"
+          },
+          {
+            "title": "Screen Recorder",
+            "price": "990"
+          },
+          {
+            "title": "Photo Editor",
+            "price": "1290",
+            "list": ["Edit, enhance and retouch images", "Restore old photos"]
+          }
+        ]
+      }
+    ],
+    "payments": [
+      {
+        "title": "mastercard",
+        "imgSrc": "mastercard",
+        "width": 37,
+        "height": 29
+      },
+      {
+        "title": "VISA",
+        "imgSrc": "visa",
+        "width": 47,
+        "height": 15
+      },
+      {
+        "title": "PayPal",
+        "imgSrc": "paypal",
+        "width": 53,
+        "height": 13
+      },
+      {
+        "title": "Discover",
+        "imgSrc": "discover",
+        "width": 57,
+        "height": 30
+      },
+      {
+        "title": "American Express",
+        "imgSrc": "american",
+        "width": 60,
+        "height": 38
+      }
+    ],
+    "featuresList": [
+      {
+        "title": "30 Day Money Back Guarantee",
+        "description": "If you experience technical or other problems that cannot be solved, you can get a complete refund of your purchase price within 30 days. Check our Refund Policy to find out if you are eligible for a full refund.",
+        "modifier": "money"
+      },
+      {
+        "title": "Totally Secure Payments",
+        "description": "Our payments are processed via the 2Checkout payment gateway. 2Checkout provides the highest standards of online security. It guarantees the safety of your payments and personal information.",
+        "modifier": "secure"
+      },
+      {
+        "title": "What Do I Get?",
+        "description": "15 minutes after purchase, you will receive an email with a download link and activation key to the account used to make the purchase. Use these to download and activate the program.",
+        "modifier": "get"
+      }
+    ],
+    "supportList": [
+      {
+        "title": "24/7 Payment Support",
+        "description": "Contact the 2Checkout 24/7 English language support service by phone at +31 88 000 0008(international) with any payment-related questions.",
+        "modifier": "phone"
+      },
+      {
+        "title": "Movavi Software Support",
+        "description": "If you have any problems activating or using the programs, visit our Help Center for answers, live support, software manuals, and quick user guides.",
+        "modifier": "support"
+      }
+    ]
+  }
+}

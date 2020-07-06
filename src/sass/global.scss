@@ -1,0 +1,57 @@
+html {
+  display: flex;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-width: $mobile-width;
+  width: 100%;
+  min-height: 100vh;
+
+  font-family: $font-family;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: $black;
+
+  background-color: $white;
+}
+
+main {
+  flex-grow: 1;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+}
+
+.sr-only {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}

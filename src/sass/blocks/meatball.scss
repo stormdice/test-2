@@ -1,0 +1,10 @@
+.meatball {
+  display: flex;
+  color: inherit;
+  padding-right: 9px;
+  padding-left: 9px;
+
+  @include desktop {
+    display: none;
+  }
+}

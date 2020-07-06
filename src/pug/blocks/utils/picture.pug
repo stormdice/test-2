@@ -1,0 +1,27 @@
+mixin picture({imgTitle, fileExtension, width, height, excludeScreen = 'none', altText = ''})
+  -
+    const attrWidth = width ? {'width': width} : '';
+    const attrHeight = height ? {'height': height} : '';
+  case excludeScreen
+    when 'nodesktop'
+      picture
+        source(media="(max-width: 767px)" srcset=`/img/content/${imgTitle}-mobile@1x.webp, /img/content/${imgTitle}-mobile@2x.webp 2x` type="image/webp")
+        source(media="(max-width: 767px)" srcset=`/img/content/${imgTitle}-mobile@1x.${fileExtension}, /img/content/${imgTitle}-mobile@2x.${fileExtension} 2x`)
+        source(media="(max-width: 1023px)" srcset=`/img/content/${imgTitle}-tablet@1x.webp, /img/content/${imgTitle}-tablet@2x.webp 2x` type="image/webp")
+        source(media="(max-width: 1023px)" srcset=`/img/content/${imgTitle}-tablet@1x.${fileExtension}, /img/content/${imgTitle}-tablet@2x.${fileExtension} 2x`)
+        source(srcset=`/img/content/${imgTitle}@1x.webp, /img/content/${imgTitle}@2x.webp 2x` type="image/webp")
+        img(alt=altText src=`/img/content/${imgTitle}@1x.${fileExtension}` srcset=`/img/content/${imgTitle}@2x.${fileExtension} 2x`)&attributes(attrWidth, attrHeight)
+    when 'onlydesktop'
+      picture
+        source(srcset=`/img/content/${imgTitle}@1x.webp, /img/content/${imgTitle}@2x.webp 2x` type="image/webp")
+        img(alt=altText src=`/img/content/${imgTitle}@1x.${fileExtension}` srcset=`/img/content/${imgTitle}@2x.${fileExtension} 2x`)&attributes(attrWidth, attrHeight)
+    when 'none'
+      picture
+        source(media="(max-width: 767px)" srcset=`/img/content/${imgTitle}-mobile@1x.webp, /img/content/${imgTitle}-mobile@2x.webp 2x` type="image/webp")
+        source(media="(max-width: 767px)" srcset=`/img/content/${imgTitle}-mobile@1x.${fileExtension}, /img/content/${imgTitle}-mobile@2x.${fileExtension} 2x`)
+        source(media="(max-width: 1023px)" srcset=`/img/content/${imgTitle}-tablet@1x.webp, /img/content/${imgTitle}-tablet@2x.webp 2x` type="image/webp")
+        source(media="(max-width: 1023px)" srcset=`/img/content/${imgTitle}-tablet@1x.${fileExtension}, /img/content/${imgTitle}-tablet@2x.${fileExtension} 2x`)
+        source(media="(max-width: 1439px)" srcset=`/img/content/${imgTitle}-desktop@1x.webp, /img/content/${imgTitle}-desktop@2x.webp 2x` type="image/webp")
+        source(media="(max-width: 1439px)" srcset=`/img/content/${imgTitle}-desktop@1x.${fileExtension}, /img/content/${imgTitle}-desktop@2x.${fileExtension} 2x`)
+        source(srcset=`/img/content/${imgTitle}@1x.webp, /img/content/${imgTitle}@2x.webp 2x` type="image/webp")
+        img(alt=altText src=`/img/content/${imgTitle}@1x.${fileExtension}` srcset=`/img/content/${imgTitle}@2x.${fileExtension} 2x`)&attributes(attrWidth, attrHeight)

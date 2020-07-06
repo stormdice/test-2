@@ -1,0 +1,13 @@
+extends ../layouts/base
+
+block content
+  .main__top
+    .container
+      h1.main__title Movavi Video Suite for Windows
+      +products(data.products)
+      +payment(data.payments)
+      +list(data.featuresList, 'list--features')
+  .main__bottom
+    .container
+      +list(data.supportList, 'list--support')
+

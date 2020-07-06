@@ -1,0 +1,9 @@
+.link-blue {
+  color: $blue-1;
+  transition: color $time;
+
+  &:hover,
+  &:focus {
+    color: $blue-2;
+  }
+}

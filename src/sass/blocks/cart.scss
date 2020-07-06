@@ -1,0 +1,26 @@
+.cart {
+  display: flex;
+  margin-right: 25px;
+  margin-left: auto;
+
+  color: inherit;
+
+  @include tablet {
+    margin-right: 22px;
+  }
+
+  @include desktop {
+    margin-right: 0;
+  }
+}
+
+.cart__icon {
+  margin-right: 9px;
+
+  transform: translateY(2px);
+}
+
+.cart__price {
+  font-size: 14px;
+  color: $white-transparent-1;
+}

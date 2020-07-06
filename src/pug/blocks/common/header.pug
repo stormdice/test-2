@@ -1,0 +1,19 @@
+mixin header()
+  header.header
+    .container.header__container
+      button.menu(type="button")
+        span.sr-only Open navigation
+        svg(width="30" height="24")
+          use(xlink:href="/img/sprite.svg#burger")
+      a.logo(href="/")
+        img(src="/img/logo.svg" width="95" height="20" alt="movavi")
+      a.cart.js-cart(href="#" title="Перейти в корзину")
+        svg.cart__icon(width="17" height="17" aria-hidden="true")
+          use(xlink:href="/img/sprite.svg#shopping-cart")
+        span.cart__price(lang="ru") 99.0 руб.
+      a.meatball(href="#" title="Показать дополнительные опции")
+        span.sr-only Open additional navigation
+        svg(width="4" height="20" aria-hidden="true")
+          use(xlink:href="/img/sprite.svg#meatball")
+
+

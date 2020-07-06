@@ -1,0 +1,31 @@
+$retina-dpi: 144dpi;
+$retina-dppx: 1.5dppx;
+
+$desktop-wide-width: 1200px;
+$desktop-width: 960px;
+$tablet-width: 768px;
+$mobile-large-width: 540px;
+$mobile-width: 320px;
+
+$reserve-font-family: "Arial", sans-serif;
+$font-family: "Open Sans", $reserve-font-family;
+
+$time: 0.2s ease-out;
+$border-radius: 6px;
+
+$black: #000000;
+$black-transparent-1: rgba(0, 0, 0, 0.8);
+$black-transparent-2: rgba(0, 0, 0, 0.2);
+$black-transparent-3: rgba(0, 0, 0, 0.5);
+$white: #ffffff;
+$white-transparent-1: rgba(255, 255, 255, 0.8);
+$white-transparent-2: rgba(255, 255, 255, 0.3);
+$light-blue-1: #e3f0ff;
+$light-blue-2: #f2f8ff;
+$red-1: #ef5350;
+$gray-1: #757575;
+$gray-2: #c2c4c6;
+$gray-3: #616161;
+$gray-4: #bdbdbd;
+$blue-1: #3581d5;
+$blue-2: #1962b2;

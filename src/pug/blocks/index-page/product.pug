@@ -1,0 +1,36 @@
+mixin product(product)
+  article(class=`product ${product.isBestseller ? 'product--bestseller' : ''}`)
+    .product__bestseller best value
+    .product__top
+      h2.product__title #{product.title}
+      p.product__subtitle #{product.subtitle}
+
+      each item in product.includedItems
+
+        if (item.list)
+          .product__item
+            .product__row
+              span.product__cell.product__cell--bold #{item.title}
+              span.product__cell #{item.price} руб.
+
+            ul.product__list
+
+              each listItem in item.list
+
+                li.product__list-item #{listItem}
+        else
+          .product__row
+            span.product__cell #{item.title}
+            span.product__cell #{item.price} руб.
+
+    .product__bottom
+      p.product__special-price #{product.price} руб.
+      p.product__price
+        | #{product.specialPrice}
+        |
+        span руб.
+
+      if (product.isBestseller)
+        p.product__price-terms Offer valid until September 30, 2018
+
+      a(class=`btn ${product.isBestseller ? 'btn--blue' : 'btn--blue-border'} product__buy` href="#") Buy Now
