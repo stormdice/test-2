@@ -28,6 +28,7 @@
   @include tablet {
     display: flex;
     align-items: flex-start;
+    flex-grow: 1;
   }
 }
 
@@ -42,6 +43,7 @@
 
   @include tablet {
     margin-bottom: 0;
+    margin-right: auto;
     padding-right: 10px;
 
     font-size: 16px;

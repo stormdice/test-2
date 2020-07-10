@@ -10,7 +10,7 @@ mixin header()
       a.cart.js-cart(href="#" title="Перейти в корзину")
         svg.cart__icon(width="17" height="17" aria-hidden="true")
           use(xlink:href="/img/sprite.svg#shopping-cart")
-        span.cart__price(lang="ru") 99.0 руб.
+        span.cart__price.js-header-price(lang="ru")
       a.meatball(href="#" title="Показать дополнительные опции")
         span.sr-only Open additional navigation
         svg(width="4" height="20" aria-hidden="true")

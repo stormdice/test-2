@@ -1,5 +1,5 @@
 mixin product(product)
-  article(class=`product ${product.isBestseller ? 'product--bestseller' : ''}`)
+  article(class=`product ${product.isBestseller ? 'product--bestseller' : ''}` id=product.id)
     .product__bestseller best value
     .product__top
       h2.product__title #{product.title}
@@ -33,4 +33,4 @@ mixin product(product)
       if (product.isBestseller)
         p.product__price-terms Offer valid until September 30, 2018
 
-      a(class=`btn ${product.isBestseller ? 'btn--blue' : 'btn--blue-border'} product__buy` href="#") Buy Now
+      a(class=`btn ${product.isBestseller ? 'btn--blue' : 'btn--blue-border'} product__buy js-buy` href="#") Buy Now

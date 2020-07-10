@@ -7,26 +7,25 @@ const modalClose = (modal) => {
 
 const showModalCart = () => {
   const modal = document.querySelector('.js-modal');
-  const cartButton = document.querySelector('.js-cart');
 
-  if (modal && cartButton) {
-    const closeBtn = modal.querySelector('.js-modal-close');
-
-    cartButton.addEventListener('click', () => {
-      modal.classList.add('modal--show');
-      disablePageScroll(modal);
-    });
-
-    closeBtn.addEventListener('click', () => {
-      modalClose(modal);
-    });
-
-    modal.addEventListener('mouseup', (evt) => {
-      if (evt.target === modal) {
-        modalClose(modal);
-      }
-    });
+  if (!modal) {
+    return;
   }
+
+  const closeBtn = modal.querySelector('.js-modal-close');
+
+  closeBtn.addEventListener('click', () => {
+    modalClose(modal);
+  });
+
+  modal.addEventListener('mouseup', (evt) => {
+    if (evt.target === modal) {
+      modalClose(modal);
+    }
+  });
+
+  modal.classList.add('modal--show');
+  disablePageScroll(modal);
 };
 
 export default showModalCart;

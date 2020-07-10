@@ -2,6 +2,7 @@
   "data": {
     "products": [
       {
+        "id": "1",
         "title": "Video Suite",
         "subtitle": "Lifetime / 1 PC",
         "price": "3 770",
@@ -22,6 +23,7 @@
         ]
       },
       {
+        "id": "2",
         "isBestseller": true,
         "title": "Video Suite + Photo Editor",
         "subtitle": "Lifetime / 1 PC",

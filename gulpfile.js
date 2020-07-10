@@ -21,9 +21,7 @@ const fs = require('fs');
 const svgstore = require('gulp-svgstore');
 const validator = require('gulp-html');
 
-const nuHtmlChecker = () => {
-  return gulp.src('build/*.html').pipe(validator());
-};
+const nuHtmlChecker = () => gulp.src('build/*.html').pipe(validator());
 
 const sprite = () =>
   src('src/img/svg-sprite/*.svg')
