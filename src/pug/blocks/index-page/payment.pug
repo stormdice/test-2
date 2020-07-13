@@ -1,7 +1,0 @@
-mixin payment(payments)
-  ul.payment
-
-    each payment in payments
-
-      li.payment__item
-        +picture({imgTitle: payment.imgSrc, fileExtension: 'png', width: payment.width, height: payment.height, excludeScreen: 'onlydesktop', altText: payment.title})

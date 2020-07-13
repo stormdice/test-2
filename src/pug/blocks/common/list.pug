@@ -1,8 +1,0 @@
-mixin list(items, modifier)
-  ul(class=`list ${modifier ? modifier : ''}`)
-
-    each item in items
-
-      li(class=`list__item ${item.modifier ? `list__item--${item.modifier}` : ''}`)
-        h3.list__title #{item.title}
-        p.list__description #{item.description}
