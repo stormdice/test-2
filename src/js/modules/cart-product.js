@@ -39,6 +39,46 @@ const getCartItemsFromLocalStorage = () => {
 };
 
 /**
+ * Добавляет состояние для пустой корзины
+ */
+const addEmtpyCartState = () => {
+  const items = getCartItemsFromLocalStorage();
+
+  if (items.length !== 0) {
+    return;
+  }
+
+  const modalCart = document.querySelector('.cart-modal__content');
+  const priceElement = document.querySelector('.js-header-price');
+
+  modalCart.innerHTML = 'Your cart is empty';
+  priceElement.innerHTML = '';
+};
+
+/**
+ * удаляет все товары из корзины
+ */
+const deleteAllItems = () => {
+  localStorage.setItem(Cart.KEY, '[]');
+  addEmtpyCartState();
+};
+
+/**
+ * добавляет обработчик удаления всех товаров из корзины
+ */
+const addDeleteAllItemsHandler = () => {
+  const deleteButton = document.querySelector('.js-delete-all');
+
+  if (!deleteButton) {
+    return;
+  }
+
+  deleteButton.addEventListener('click', () => {
+    deleteAllItems();
+  });
+};
+
+/**
  * Рендерит товары в корзине
  * @param {Array} items - массив id карточек
  */
@@ -61,6 +101,8 @@ const renderShoppingCartItems = (items) => {
   modalCart.insertAdjacentHTML('beforeend', cartItems);
   addDeleteItemHandlers();
   calculateHeaderPrice(addedProducts);
+  addDeleteAllItemsHandler();
+  addEmtpyCartState();
 };
 
 /**
@@ -73,8 +115,12 @@ const deleteItemFromCart = (id) => {
 
   localStorage.setItem(Cart.KEY, JSON.stringify(newData));
   renderShoppingCartItems(getCartItemsFromLocalStorage());
+  addEmtpyCartState();
 };
 
+/**
+ * добавляет обработчики удаления товара
+ */
 const addDeleteItemHandlers = () => {
   const deleteButtons = document.querySelectorAll('.js-delete-item');
 
@@ -107,21 +153,4 @@ const addItemToCart = (id) => {
   renderShoppingCartItems(getCartItemsFromLocalStorage());
 };
 
-(() => {
-  const buyButtons = document.querySelectorAll('.js-buy');
-
-  if (buyButtons.length === 0) {
-    return;
-  }
-
-  buyButtons.forEach((button) => {
-    button.addEventListener('click', (evt) => {
-      evt.preventDefault();
-      const idx = parseInt(button.closest('.product').id, 10);
-
-      addItemToCart(idx);
-    });
-  });
-})();
-
-export { renderShoppingCartItems, getCartItemsFromLocalStorage };
+export { addItemToCart, renderShoppingCartItems, getCartItemsFromLocalStorage };

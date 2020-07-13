@@ -1,10 +1,17 @@
 import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 
+/**
+ * Закрывает модальное окно
+ * @param {DOM Node} modal - модальное окно
+ */
 const modalClose = (modal) => {
   modal.classList.remove('modal--show');
   enablePageScroll(modal);
 };
 
+/**
+ * Показывает модальное окно корзины
+ */
 const showModalCart = () => {
   const modal = document.querySelector('.js-modal');
 
