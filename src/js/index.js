@@ -1,11 +1,13 @@
 import 'svgxuse';
-import './modules/utils';
+import './modules/closest-polyfill';
 import showModalCart from './modules/cart-modal';
 import {
   addItemToCart,
   renderShoppingCartItems,
   getCartItemsFromLocalStorage,
+  changePricesToOriginal,
 } from './modules/cart-product';
+import initializeClock from './modules/clock';
 
 /**
  * Добавляет обработчик открытия корзины
@@ -47,3 +49,4 @@ const addBuyItemHandlers = () => {
 addOpenHeaderCartHandler();
 addBuyItemHandlers();
 renderShoppingCartItems(getCartItemsFromLocalStorage());
+initializeClock('clock', changePricesToOriginal);

@@ -8,7 +8,9 @@ import calculateHeaderPrice from './header-price';
  * @param {string} cartItem.title - Наименование товара
  * @param {number} cartItem.price - Цена товара
  */
-const cartItemTemplate = ({ id, title, price }) => {
+const cartItemTemplate = ({ id, title, price, specialPrice }, actionIsOver) => {
+  const itemPrice = actionIsOver ? price : specialPrice;
+
   return `<article class="cart-item" id="cart-item-${id}">
       <div class="cart-item__img">
         <picture>
@@ -18,7 +20,7 @@ const cartItemTemplate = ({ id, title, price }) => {
       </div>
       <div class="cart-item__content">
         <h3 class="cart-item__title">${title}</h3>
-        <span class="cart-item__price" lang="ru">${price.toLocaleString(
+        <span class="cart-item__price" lang="ru">${itemPrice.toLocaleString(
           'ru-RU'
         )} руб.</span>
         <button class="btn btn--gray cart-item__delete js-delete-item" type="button">Delete</button>
@@ -32,10 +34,21 @@ const cartItemTemplate = ({ id, title, price }) => {
  */
 const getCartItemsFromLocalStorage = () => {
   if (!localStorage.getItem(Cart.KEY)) {
-    localStorage.setItem(Cart.KEY, JSON.stringify(Cart.DATA));
+    localStorage.setItem(Cart.KEY, JSON.stringify(Cart.VALUE));
   }
 
   return JSON.parse(localStorage.getItem(Cart.KEY));
+};
+
+/**
+ * Получает данные из LocalStorage
+ */
+const checkActionTerm = () => {
+  if (!localStorage.getItem('actionIsOver')) {
+    localStorage.setItem('actionIsOver', JSON.stringify(false));
+  }
+
+  return JSON.parse(localStorage.getItem('actionIsOver'));
 };
 
 /**
@@ -93,8 +106,14 @@ const renderShoppingCartItems = (items) => {
     items.includes(product.id)
   );
 
+  let actionIsOver = false;
+
+  if (checkActionTerm()) {
+    actionIsOver = true;
+  }
+
   const cartItems = addedProducts
-    .map((product) => cartItemTemplate(product))
+    .map((product) => cartItemTemplate(product, actionIsOver))
     .join('\n');
 
   modalCart.innerHTML = '';
@@ -153,4 +172,26 @@ const addItemToCart = (id) => {
   renderShoppingCartItems(getCartItemsFromLocalStorage());
 };
 
-export { addItemToCart, renderShoppingCartItems, getCartItemsFromLocalStorage };
+/**
+ * Меняет цены на оригинальные
+ */
+const changePricesToOriginal = () => {
+  const bestsellers = document.querySelectorAll('.product');
+
+  bestsellers.forEach((item, index) => {
+    const price = item.querySelector('.js-product-price');
+
+    item.classList.add('product--original-price');
+    price.textContent = `${PRODUCTS[index].price.toLocaleString('ru-RU')}`;
+  });
+
+  localStorage.setItem('actionIsOver', 'true');
+  renderShoppingCartItems(getCartItemsFromLocalStorage());
+};
+
+export {
+  addItemToCart,
+  renderShoppingCartItems,
+  getCartItemsFromLocalStorage,
+  changePricesToOriginal,
+};
