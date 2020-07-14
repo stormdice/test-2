@@ -6728,10 +6728,21 @@ var addBuyItemHandlers = function addBuyItemHandlers() {
   });
 };
 
+var addClearLocalStorageHandler = function addClearLocalStorageHandler() {
+  var clearButton = document.querySelector('.js-clean-localstorage');
+
+  if (clearButton) {
+    clearButton.addEventListener('click', function () {
+      localStorage.clear();
+    });
+  }
+};
+
 addOpenHeaderCartHandler();
 addBuyItemHandlers();
 Object(_modules_cart_product__WEBPACK_IMPORTED_MODULE_5__["renderShoppingCartItems"])(Object(_modules_cart_product__WEBPACK_IMPORTED_MODULE_5__["getCartItemsFromLocalStorage"])());
 Object(_modules_clock__WEBPACK_IMPORTED_MODULE_6__["default"])('clock', _modules_cart_product__WEBPACK_IMPORTED_MODULE_5__["changePricesToOriginal"]);
+addClearLocalStorageHandler();
 
 /***/ }),
 
@@ -6904,7 +6915,9 @@ var cartItemTemplate = function cartItemTemplate(_ref, actionIsOver) {
 
 
 var getCartItemsFromLocalStorage = function getCartItemsFromLocalStorage() {
-  if (!localStorage.getItem(_data__WEBPACK_IMPORTED_MODULE_22__["Cart"].KEY)) {
+  var cartItems = localStorage.getItem(_data__WEBPACK_IMPORTED_MODULE_22__["Cart"].KEY);
+
+  if (!cartItems) {
     localStorage.setItem(_data__WEBPACK_IMPORTED_MODULE_22__["Cart"].KEY, JSON.stringify(_data__WEBPACK_IMPORTED_MODULE_22__["Cart"].VALUE));
   }
 
@@ -6930,7 +6943,7 @@ var checkActionTerm = function checkActionTerm() {
 var addEmtpyCartState = function addEmtpyCartState() {
   var items = getCartItemsFromLocalStorage();
 
-  if (items.length !== 0) {
+  if (items.length > 0) {
     return;
   }
 
@@ -6960,9 +6973,7 @@ var addDeleteAllItemsHandler = function addDeleteAllItemsHandler() {
     return;
   }
 
-  deleteButton.addEventListener('click', function () {
-    deleteAllItems();
-  });
+  deleteButton.addEventListener('click', deleteAllItems);
 };
 /**
  * Рендерит товары в корзине
@@ -6980,12 +6991,7 @@ var renderShoppingCartItems = function renderShoppingCartItems(items) {
   var addedProducts = _data__WEBPACK_IMPORTED_MODULE_22__["PRODUCTS"].filter(function (product) {
     return items.includes(product.id);
   });
-  var actionIsOver = false;
-
-  if (checkActionTerm()) {
-    actionIsOver = true;
-  }
-
+  var actionIsOver = checkActionTerm();
   var cartItems = addedProducts.map(function (product) {
     return cartItemTemplate(product, actionIsOver);
   }).join('\n');
@@ -7051,8 +7057,8 @@ var addItemToCart = function addItemToCart(id) {
 
 
 var changePricesToOriginal = function changePricesToOriginal() {
-  var bestsellers = document.querySelectorAll('.product');
-  bestsellers.forEach(function (item, index) {
+  var products = document.querySelectorAll('.product');
+  products.forEach(function (item, index) {
     var price = item.querySelector('.js-product-price');
     item.classList.add('product--original-price');
     price.textContent = "".concat(_data__WEBPACK_IMPORTED_MODULE_22__["PRODUCTS"][index].price.toLocaleString('ru-RU'));
