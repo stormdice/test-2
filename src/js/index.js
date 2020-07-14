@@ -46,7 +46,18 @@ const addBuyItemHandlers = () => {
   });
 };
 
+const addClearLocalStorageHandler = () => {
+  const clearButton = document.querySelector('.js-clean-localstorage');
+
+  if (clearButton) {
+    clearButton.addEventListener('click', () => {
+      localStorage.clear();
+    });
+  }
+};
+
 addOpenHeaderCartHandler();
 addBuyItemHandlers();
 renderShoppingCartItems(getCartItemsFromLocalStorage());
 initializeClock('clock', changePricesToOriginal);
+addClearLocalStorageHandler();

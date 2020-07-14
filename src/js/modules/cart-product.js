@@ -33,7 +33,9 @@ const cartItemTemplate = ({ id, title, price, specialPrice }, actionIsOver) => {
  * @return {Array} - массив id карточек
  */
 const getCartItemsFromLocalStorage = () => {
-  if (!localStorage.getItem(Cart.KEY)) {
+  const cartItems = localStorage.getItem(Cart.KEY);
+
+  if (!cartItems) {
     localStorage.setItem(Cart.KEY, JSON.stringify(Cart.VALUE));
   }
 
@@ -86,9 +88,7 @@ const addDeleteAllItemsHandler = () => {
     return;
   }
 
-  deleteButton.addEventListener('click', () => {
-    deleteAllItems();
-  });
+  deleteButton.addEventListener('click', deleteAllItems);
 };
 
 /**

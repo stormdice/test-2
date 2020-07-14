@@ -7,6 +7,7 @@
 }
 
 .footer__container {
+  position: relative;
   padding-top: 49px;
   padding-bottom: 40px;
 
@@ -105,4 +106,17 @@
 
 .footer__link {
   color: $blue-2;
+}
+
+.footer__clean {
+  display: none;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+
+  padding: 2px;
+
+  @include tablet {
+    display: block;
+  }
 }
