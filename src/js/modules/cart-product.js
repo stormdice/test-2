@@ -57,7 +57,7 @@ const checkActionTerm = () => {
 const addEmtpyCartState = () => {
   const items = getCartItemsFromLocalStorage();
 
-  if (items.length !== 0) {
+  if (items.length > 0) {
     return;
   }
 
@@ -106,11 +106,7 @@ const renderShoppingCartItems = (items) => {
     items.includes(product.id)
   );
 
-  let actionIsOver = false;
-
-  if (checkActionTerm()) {
-    actionIsOver = true;
-  }
+  const actionIsOver = checkActionTerm();
 
   const cartItems = addedProducts
     .map((product) => cartItemTemplate(product, actionIsOver))
@@ -176,9 +172,9 @@ const addItemToCart = (id) => {
  * Меняет цены на оригинальные
  */
 const changePricesToOriginal = () => {
-  const bestsellers = document.querySelectorAll('.product');
+  const products = document.querySelectorAll('.product');
 
-  bestsellers.forEach((item, index) => {
+  products.forEach((item, index) => {
     const price = item.querySelector('.js-product-price');
 
     item.classList.add('product--original-price');
